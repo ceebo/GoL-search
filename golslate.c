@@ -8,7 +8,7 @@ typedef struct
 	u32 *grid;
 } GolSlate;
 
-Work in progress... remove references to GoLGrid
+Work in progress... remove references to GoLGrid, etc.
 
 static void GoLSlate_bleed_sqroot_5 (const GoLGrid *gg, int orig_oncell_x, int orig_oncell_y, int area_height, int max_rounds, u32 *obj)
 {
