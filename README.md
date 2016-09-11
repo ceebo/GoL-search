@@ -1,4 +1,2 @@
 # GoL-search
-Software to allow simple creation of search programs in Conway's Game of Life
-
-NOTE: This is work in progress, and may not even compile properly yet...
+NOTE: This is an old repository, the most recent version of GoLGrid is github.com/simeksgol/GoLGrid
