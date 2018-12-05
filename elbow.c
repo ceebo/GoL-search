@@ -9,6 +9,7 @@
 #include "hashtable.c"
 #include "store.c"
 #include "celllist.c"
+#include "rect.c"
 #include "golgrid.c"
 
 #define CACHE_LINE_SIZE 64

@@ -447,8 +447,10 @@ static int GoLGrid_is_equal_to (const GoLGrid *obj_gg, const GoLGrid *ref_gg)
 	return TRUE;
 }
 
-static int GoLGrid_is_subset (const GoLGrid *obj_gg, const GoLGrid *ref_gg, int *x_of_first_not_in_ref, int *y_of_first_not_in_ref)
+static int GoLGrid_is_subset (const GoLGrid *obj_gg, const GoLGrid *ref_gg)
 {
+  int *x_of_first_not_in_ref = NULL;
+  int *y_of_first_not_in_ref = NULL;
 	if (x_of_first_not_in_ref)
 		*x_of_first_not_in_ref = 0;
 	if (y_of_first_not_in_ref)
@@ -1004,6 +1006,7 @@ static void GoLGrid_evolve (const GoLGrid *in_gg, GoLGrid *out_gg)
 	out_gg->generation = in_gg->generation + 1;
 }
 
+/*
 static void GoLGrid_get_extract (const GoLGrid *gg, int center_x, int center_y, GolSlate *slate)
 {
 	if (!gg || !gg->grid || !slate)
@@ -1051,6 +1054,7 @@ static void GoLGrid_get_extract (const GoLGrid *gg, int center_x, int center_y, 
 		for (row_ix = copy_y_on; row_ix < copy_y_off; row_ix++)
 			*grid_entry++ = (u32) ((*((u64 *) (((u8 *) (gg->grid + (gg->row_offset * row_ix))) + strip_start))) << (-word_shift));
 }
+*/
 
 static int GoLGrid_to_cell_list (const GoLGrid *gg, CellList_s8 *cl, int max_cells)
 {
