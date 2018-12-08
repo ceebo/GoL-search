@@ -504,7 +504,7 @@ static void filter_bss (const ByteSeqStore *in_bss, const GoLGrid *size_category
 	}
 }
 
-int main (void)
+int main (int argc, char *argv[])
 {
 	Rect grid_rect;
 	Rect_make (&grid_rect, -96, -64, 192, 128);
@@ -515,6 +515,20 @@ int main (void)
 	// We at least check the result of the first create, to make sure we're running on a little-endian machine
 	if (!GoLGrid_create (&elbow_pattern, &grid_rect, row_offset, MEM_PAGE_SIZE, 0))
 		return EXIT_FAILURE;
+	
+	u16 cl_buf [1025];
+	CellList_s8 *cl = (CellList_s8 *) cl_buf;
+
+	for (int i = 1; i < argc; i += 2) {
+	  cl->cell[i / 2].x = atoi(argv[i]);
+	  cl->cell[i / 2].y = atoi(argv[i+1]);
+	}
+
+	cl->cell_count = argc / 2;
+	
+	if (argc > 1)
+	  GoLGrid_or_cell_list(&elbow_pattern, cl, 0, 0);
+	else
 	
 	GoLGrid_or_cell_list (&elbow_pattern, CellList_s8_block_cells (), -1, -4);
 //	GoLGrid_or_cell_list (&elbow_pattern, CellList_s8_block_cells (), 3, -1);
@@ -555,7 +569,7 @@ int main (void)
 	int settle_wait_time = 352;
 	int min_pool_size = 100000;
 	
-	double center_x = 24.0;
+	double center_x = 0.0;
 	double center_y = 0.0;
 	double allowed_radius = 42.50;
 	int max_x_y_sum = 128;
